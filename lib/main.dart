@@ -4,8 +4,17 @@ void main() {
   runApp(const MyApp());
 }
 
-void test() {
-  List<String> names = ["hello", "there"];
+Future<int> multipByTwo(int x) {
+  return Future.delayed(const Duration(seconds: 3), () {
+    return x * 2;
+  });
+}
+
+void test() async {
+  final int x = 5;
+
+  final int b = await multipByTwo(x);
+  print(b);
 }
 
 class MyApp extends StatelessWidget {
@@ -13,6 +22,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    test();
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
